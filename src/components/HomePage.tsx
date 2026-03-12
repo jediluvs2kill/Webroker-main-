@@ -1,12 +1,13 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { Building2, Users, Home, CreditCard, FileText, Store, ArrowRight, Sparkles, ShieldCheck, Zap, BarChart3, Globe, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Building2, Users, Home, CreditCard, FileText, Store, ArrowRight, Sparkles, ShieldCheck, Zap, BarChart3, Globe, CheckCircle2, Check, X } from 'lucide-react';
 
 interface HomePageProps {
   onEnter: (view: any) => void;
 }
 
 export default function HomePage({ onEnter }: HomePageProps) {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const roles = [
     {
       id: 'builder',
@@ -232,6 +233,108 @@ export default function HomePage({ onEnter }: HomePageProps) {
           </div>
         </div>
 
+        {/* Pricing Section */}
+        <div id="pricing" className="mb-32 pt-16 border-t border-slate-800/50">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Simple, Transparent Pricing</h2>
+            <p className="text-slate-400">Choose the plan that fits your scale. Upgrade anytime as your business grows.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Starter Plan */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 flex flex-col"
+            >
+              <h3 className="text-xl font-semibold text-white mb-2">Builder Basic</h3>
+              <p className="text-sm text-slate-400 mb-6">For emerging developers managing single projects.</p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-white">₹39,999</span>
+                <span className="text-slate-400">/mo</span>
+              </div>
+              <ul className="space-y-4 mb-8 flex-1">
+                {['Live Inventory Management', 'Basic Analytics Dashboard', 'Up to 5 User Seats', 'Standard Email Support'].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
+                    <Check className="w-5 h-5 text-indigo-400 shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <button 
+                onClick={() => setIsDemoModalOpen(true)}
+                className="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-medium transition-colors"
+              >
+                Start Free Trial
+              </button>
+            </motion.div>
+
+            {/* Pro Plan */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="p-8 rounded-3xl bg-gradient-to-b from-indigo-900/40 to-slate-900/50 border border-indigo-500/30 flex flex-col relative"
+            >
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 py-1 bg-indigo-500 text-white text-xs font-bold uppercase tracking-wider rounded-full">
+                Most Popular
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Broker Pro</h3>
+              <p className="text-sm text-indigo-200/70 mb-6">For high-performing agencies and channel partners.</p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-white">₹14,999</span>
+                <span className="text-slate-400">/mo</span>
+              </div>
+              <ul className="space-y-4 mb-8 flex-1">
+                {['AI Lead Matching & CRM', 'Smart Scheduling & Virtual Tours', 'Unlimited Listings', 'Commission Tracker', 'Priority 24/7 Support'].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
+                    <Check className="w-5 h-5 text-indigo-400 shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <button 
+                onClick={() => setIsDemoModalOpen(true)}
+                className="w-full py-3 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-medium transition-colors shadow-lg shadow-indigo-500/25"
+              >
+                Get Started
+              </button>
+            </motion.div>
+
+            {/* Enterprise Plan */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800 flex flex-col"
+            >
+              <h3 className="text-xl font-semibold text-white mb-2">Enterprise OS</h3>
+              <p className="text-sm text-slate-400 mb-6">For large institutions and multi-city developers.</p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-white">Custom</span>
+              </div>
+              <ul className="space-y-4 mb-8 flex-1">
+                {['White-label Buyer Portal', 'Full API Access & Webhooks', 'Custom AI Model Training', 'Dedicated Success Manager', 'SLA Guarantee'].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
+                    <Check className="w-5 h-5 text-indigo-400 shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <button 
+                onClick={() => setIsDemoModalOpen(true)}
+                className="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-medium transition-colors"
+              >
+                Contact Sales
+              </button>
+            </motion.div>
+          </div>
+        </div>
+
         {/* CTA Section */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
@@ -245,10 +348,18 @@ export default function HomePage({ onEnter }: HomePageProps) {
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">Ready to transform your real estate operations?</h2>
             <p className="text-indigo-100 text-lg mb-10">Join the top builders and brokers who are already using WeBroker OS to close deals faster and smarter.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-indigo-900 font-bold hover:bg-indigo-50 transition-colors shadow-xl shadow-indigo-900/20 flex items-center justify-center gap-2">
+              <button 
+                onClick={() => setIsDemoModalOpen(true)}
+                className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-indigo-900 font-bold hover:bg-indigo-50 transition-colors shadow-xl shadow-indigo-900/20 flex items-center justify-center gap-2"
+              >
                 Request a Demo <ArrowRight className="w-5 h-5" />
               </button>
-              <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-indigo-900/40 text-white font-semibold hover:bg-indigo-900/60 border border-indigo-400/30 backdrop-blur-md transition-colors">
+              <button 
+                onClick={() => {
+                  document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="w-full sm:w-auto px-8 py-4 rounded-full bg-indigo-900/40 text-white font-semibold hover:bg-indigo-900/60 border border-indigo-400/30 backdrop-blur-md transition-colors"
+              >
                 View Pricing
               </button>
             </div>
@@ -260,6 +371,74 @@ export default function HomePage({ onEnter }: HomePageProps) {
           </div>
         </motion.div>
       </main>
+
+      {/* Request Demo Modal */}
+      <AnimatePresence>
+        {isDemoModalOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          >
+            <motion.div 
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl"
+            >
+              <button 
+                onClick={() => setIsDemoModalOpen(false)}
+                className="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold text-white mb-2">Request a Demo</h3>
+                <p className="text-slate-400 text-sm">See how WeBroker OS can transform your real estate operations. Fill out the form below and our team will be in touch.</p>
+              </div>
+
+              <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); setIsDemoModalOpen(false); }}>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-xs font-medium text-slate-300">First Name</label>
+                    <input type="text" required className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all" placeholder="John" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-medium text-slate-300">Last Name</label>
+                    <input type="text" required className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all" placeholder="Doe" />
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-slate-300">Work Email</label>
+                  <input type="email" required className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all" placeholder="john@company.com" />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-slate-300">Company Name</label>
+                  <input type="text" required className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all" placeholder="Acme Real Estate" />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-slate-300">I am a...</label>
+                  <select required className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all appearance-none">
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="builder">Builder / Developer</option>
+                    <option value="broker">Broker / Channel Partner</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <button type="submit" className="w-full py-4 mt-4 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-bold transition-colors shadow-lg shadow-indigo-500/25">
+                  Schedule My Demo
+                </button>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
