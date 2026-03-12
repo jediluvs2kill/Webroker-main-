@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Building2, Users, Home, CreditCard, FileText, Store, ArrowRight, Sparkles } from 'lucide-react';
+import { Building2, Users, Home, CreditCard, FileText, Store, ArrowRight, Sparkles, ShieldCheck, Zap, BarChart3, Globe, CheckCircle2 } from 'lucide-react';
 
 interface HomePageProps {
   onEnter: (view: any) => void;
@@ -155,7 +155,7 @@ export default function HomePage({ onEnter }: HomePageProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="border-t border-slate-800/50 pt-16"
+          className="border-t border-slate-800/50 pt-16 mb-32"
         >
           <div className="text-center mb-10">
             <h2 className="text-xl font-semibold text-slate-300">Explore Platform Modules</h2>
@@ -176,6 +176,87 @@ export default function HomePage({ onEnter }: HomePageProps) {
                 </div>
               </button>
             ))}
+          </div>
+        </motion.div>
+
+        {/* Stats Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-32 border-y border-slate-800/50 py-16"
+        >
+          {[
+            { label: 'Properties Listed', value: '12,000+' },
+            { label: 'Active Brokers', value: '5,400+' },
+            { label: 'Transactions Processed', value: '$2.4B' },
+            { label: 'Average Time to Close', value: '14 Days' }
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">{stat.value}</div>
+              <div className="text-sm text-slate-400 font-medium uppercase tracking-wider">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Features Grid */}
+        <div className="mb-32">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why WeBroker OS?</h2>
+            <p className="text-slate-400">The only platform that connects the entire real estate lifecycle into a single, intelligent ecosystem.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: Zap, title: 'Real-Time Sync', desc: 'Inventory and pricing updates instantly across all broker networks.' },
+              { icon: ShieldCheck, title: 'Secure Escrow', desc: 'Bank-grade security for all transactions and token advances.' },
+              { icon: BarChart3, title: 'Predictive Analytics', desc: 'AI models forecast demand and optimize unit pricing dynamically.' },
+              { icon: Globe, title: 'Global Reach', desc: 'Connect with international buyers and NRI investors seamlessly.' }
+            ].map((feature, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="p-6 rounded-2xl bg-slate-900/30 border border-slate-800/50 hover:bg-slate-800/40 transition-colors"
+              >
+                <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-6">
+                  <feature.icon className="w-6 h-6 text-indigo-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-white mb-2">{feature.title}</h4>
+                <p className="text-sm text-slate-400 leading-relaxed">{feature.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-600 to-purple-700 p-12 md:p-16 text-center border border-indigo-500/30"
+        >
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">Ready to transform your real estate operations?</h2>
+            <p className="text-indigo-100 text-lg mb-10">Join the top builders and brokers who are already using WeBroker OS to close deals faster and smarter.</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-indigo-900 font-bold hover:bg-indigo-50 transition-colors shadow-xl shadow-indigo-900/20 flex items-center justify-center gap-2">
+                Request a Demo <ArrowRight className="w-5 h-5" />
+              </button>
+              <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-indigo-900/40 text-white font-semibold hover:bg-indigo-900/60 border border-indigo-400/30 backdrop-blur-md transition-colors">
+                View Pricing
+              </button>
+            </div>
+            
+            <div className="mt-10 flex items-center justify-center gap-6 text-sm text-indigo-200 font-medium">
+              <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> No credit card required</div>
+              <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> 14-day free trial</div>
+            </div>
           </div>
         </motion.div>
       </main>
