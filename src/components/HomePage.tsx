@@ -423,8 +423,8 @@ export default function HomePage({ onEnter }: HomePageProps) {
 
                 <div className="space-y-2">
                   <label className="text-xs font-medium text-slate-300">I am a...</label>
-                  <select required className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all appearance-none">
-                    <option value="" disabled selected>Select your role</option>
+                  <select required defaultValue="" className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all appearance-none">
+                    <option value="" disabled>Select your role</option>
                     <option value="builder">Builder / Developer</option>
                     <option value="broker">Broker / Channel Partner</option>
                     <option value="other">Other</option>
