@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Building2, Users, Home, CreditCard, FileText, Store, ArrowRight, Sparkles, ShieldCheck, Zap, BarChart3, Globe, CheckCircle2, Check, X } from 'lucide-react';
+import { Building2, Users, Home, CreditCard, FileText, Store, ArrowRight, Sparkles, ShieldCheck, Zap, BarChart3, Globe, CheckCircle2, Check, X, Bot, Award, Trophy } from 'lucide-react';
 
 interface HomePageProps {
   onEnter: (view: any) => void;
@@ -12,35 +12,35 @@ export default function HomePage({ onEnter }: HomePageProps) {
     {
       id: 'builder',
       title: 'Builder OS',
-      description: 'Command your inventory, optimize pricing, and manage channel partners with AI-driven insights.',
+      description: 'Track broker performance, assign premium units, and increase sales velocity with Smart Inventory Allocation.',
       icon: Building2,
       color: 'from-indigo-500 to-blue-600',
       bg: 'bg-indigo-500/10',
       border: 'border-indigo-500/20',
       text: 'text-indigo-400',
-      hooks: ['Live Inventory', 'Revenue Analytics', 'Broker Gamification', 'Market Sentiment']
+      hooks: ['Smart Inventory', 'Track Performance', 'Assign Premium Units', 'Increase Velocity']
     },
     {
       id: 'broker',
       title: 'Broker Copilot',
-      description: 'Your AI assistant for matching leads, scheduling site visits, and closing deals faster.',
+      description: 'Manage leads via a Smart Dashboard, earn WIN Points, and rank as a Top Broker in your specialty.',
       icon: Users,
       color: 'from-emerald-500 to-teal-600',
       bg: 'bg-emerald-500/10',
       border: 'border-emerald-500/20',
       text: 'text-emerald-400',
-      hooks: ['AI Lead Matching', 'Smart Scheduling', 'Commission Tracker', 'Virtual Assistant']
+      hooks: ['Smart Dashboard', 'Area Specialist', 'WIN Points', 'Lead Matching']
     },
     {
       id: 'buyer',
       title: 'Buyer Portal',
-      description: 'Find your dream property with personalized AI recommendations and transparent tracking.',
+      description: 'Input your city, budget, and urgency to get matched with the perfect Top Broker by our AI Butler.',
       icon: Home,
       color: 'from-rose-500 to-orange-600',
       bg: 'bg-rose-500/10',
       border: 'border-rose-500/20',
       text: 'text-rose-400',
-      hooks: ['AI Broker Match', 'Virtual Tours', 'Document Vault', 'Payment Milestones']
+      hooks: ['Budget Matching', 'Urgency Tracking', 'Top Broker Access', 'WIN Rewards']
     }
   ];
 
@@ -95,9 +95,9 @@ export default function HomePage({ onEnter }: HomePageProps) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight"
           >
-            One Platform.<br />
+            Your AI Butler<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-emerald-400">
-              Total Alignment.
+              for Real Estate.
             </span>
           </motion.h1>
           
@@ -107,8 +107,7 @@ export default function HomePage({ onEnter }: HomePageProps) {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-slate-400 leading-relaxed"
           >
-            AI-driven workflows connecting builders, brokers, and buyers in real-time. 
-            Select your role to enter the workspace.
+            Seamlessly connecting Buyers, Brokers, and Builders through intelligent matching, smart inventory allocation, and gamified rewards.
           </motion.p>
         </div>
 
@@ -210,10 +209,10 @@ export default function HomePage({ onEnter }: HomePageProps) {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Zap, title: 'Real-Time Sync', desc: 'Inventory and pricing updates instantly across all broker networks.' },
-              { icon: ShieldCheck, title: 'Secure Escrow', desc: 'Bank-grade security for all transactions and token advances.' },
-              { icon: BarChart3, title: 'Predictive Analytics', desc: 'AI models forecast demand and optimize unit pricing dynamically.' },
-              { icon: Globe, title: 'Global Reach', desc: 'Connect with international buyers and NRI investors seamlessly.' }
+              { icon: Bot, title: 'AI Butler Matching', desc: 'Instantly matches buyers based on city, budget, urgency, and investment preferences.' },
+              { icon: Award, title: 'Top Broker Ranking', desc: 'Brokers are categorized and ranked as Area Specialists, Luxury Experts, or Investment pros.' },
+              { icon: BarChart3, title: 'Smart Inventory Allocation', desc: 'Builders track broker deal speed and assign premium units to increase sales velocity.' },
+              { icon: Trophy, title: 'WIN Points & Rewards', desc: 'A gamified ecosystem rewarding buyers, brokers, and builders for successful transactions.' }
             ].map((feature, i) => (
               <motion.div 
                 key={i}
